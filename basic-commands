@@ -1,0 +1,35 @@
+# Create Chart
+helm create chart_name
+
+# Package Chart
+helm package chart_name
+
+# Install Local Package Chart
+helm install chart_name chart_name-0.1.0.tgz
+
+# Install Local Chart from directory
+helm install chart_name dir_name
+
+# Install Chart from repository
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm install my-release bitnami/nginx
+
+# Install Chart from repository with own values
+helm install my-release -f values.yaml bitnami/nginx
+
+# Install/Upgrade Local Chart
+helm upgrade --install chart_name dir_name
+
+# Download Chart without installing
+helm pull bitnami/nginx
+
+# Delete Chart
+helm delete chart_name
+
+# Lint Chart
+helm lint -f values.yaml dir_name
+
+# Template Chart to file
+helm template -f values.yaml dir_name > rendered.yaml
+
+
