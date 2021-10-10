@@ -32,4 +32,5 @@ helm lint -f values.yaml dir_name
 # Template Chart to file
 helm template -f values.yaml dir_name > rendered.yaml
 
-
+# Install/Upgrade Local Chart with debug, auto rollback, specifc namespace and some value for variable
+helm upgrade --debug --install --atomic ${CHART_NAME} ${CHART_PATH} --namespace $NAMESPACE --set ingress.tls=true

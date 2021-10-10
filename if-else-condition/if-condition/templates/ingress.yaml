@@ -1,0 +1,23 @@
+{{- if .Values.ingress.enabled -}}
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: test
+  labels:
+    app: test
+spec:
+{{- if .Values.ingress.tls }}
+  tls:
+    - hosts:
+        - test.com
+      secretName: test
+{{- end }}
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: test
+              servicePort: 80
+      host: test
+{{- end }}
