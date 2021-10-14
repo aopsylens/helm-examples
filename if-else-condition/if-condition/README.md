@@ -26,3 +26,28 @@ If you want to put construction in file, then set `true` to your variable  `--se
 `helm upgrade --debug --install --atomic ${CHART_NAME} ${CHART_PATH} --namespace $NAMESPACE --set ingress.tls=true`
 If you don't want to put construction in file, then set `false` to your variable `--set ingress.tls=false`
 `helm upgrade --debug --install --atomic ${CHART_NAME} ${CHART_PATH} --namespace $NAMESPACE --set ingress.tls=false`
+
+
+If you want to create some construction in file when variable matches value:
+
+1.
+```
+env:
+```
+
+2. Create construction and put some data to it
+```
+{{- if eq .Values.env "prod" }}
+  tls:
+    - hosts:
+        - test.com
+      secretName: test
+{{- end }}
+```
+
+3. Deploy chart with --set flag where you will change your value of variable
+
+If you want to put construction in file, then set `prod` to your variable  `--set env=prod`
+`helm upgrade --debug --install --atomic ${CHART_NAME} ${CHART_PATH} --namespace $NAMESPACE --set env=prod`
+If you don't want to put construction in file, then set `something` to your variable `--set env=something`
+`helm upgrade --debug --install --atomic ${CHART_NAME} ${CHART_PATH} --namespace $NAMESPACE --set env=something`
