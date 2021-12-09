@@ -26,6 +26,12 @@ helm pull bitnami/nginx
 # Download Chart without installing and unzip
 helm pull bitnami/redis --untar
 
+# Search available version of charts
+helm search repo bitnami/redis -l
+
+# Download Chart with specifc version without installing and unzip
+helm pull bitnami/redis --version="10.6.18" --untar
+
 # Delete Chart
 helm delete chart_name
 
