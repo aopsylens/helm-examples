@@ -23,6 +23,9 @@ helm upgrade --install chart_name dir_name
 # Download Chart without installing
 helm pull bitnami/nginx
 
+# Download Chart without installing and unzip
+helm pull bitnami/redis --untar
+
 # Delete Chart
 helm delete chart_name
 
